@@ -27,7 +27,7 @@ class CallService {
 
             await callSession.save();
 
-            // In reality, send notification to receiver via WebSocket
+            // eg., send notification to receiver via WebSocket
             this.notifyReceiver(receiverId, {
                 type: 'incoming_call',
                 sessionId,
@@ -82,7 +82,7 @@ class CallService {
 
                 await session.commitTransaction();
 
-                // In reality, send signaling data to both parties via WebSocket
+                // In e.g,send signaling data to both parties via WebSocket
                 this.notifyCaller(callSession.callerId, {
                     type: 'call_accepted',
                     sessionId,
@@ -260,12 +260,12 @@ class CallService {
     // Mock WebSocket notification methods
     notifyReceiver(receiverId, data) {
         console.log(`[WebSocket] Notifying receiver ${receiverId}:`, data);
-        // In reality: socket.to(receiverId).emit('call', data);
+        // socket.to(receiverId).emit('call', data);
     }
 
     notifyCaller(callerId, data) {
         console.log(`[WebSocket] Notifying caller ${callerId}:`, data);
-        // In reality: socket.to(callerId).emit('call', data);
+        //  socket.to(callerId).emit('call', data);
     }
 
     // Signaling methods for WebRTC (mocked)
@@ -304,7 +304,7 @@ class CallService {
 
     forwardSignal(userId, data) {
         console.log(`[WebSocket] Forwarding signal to ${userId}:`, data.type);
-        // In reality: socket.to(userId).emit('signal', data);
+        // socket.to(userId).emit('signal', data);
     }
 }
 
